@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Comparativa LLC 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #030712;
+            --bg-surface: #0f172a;
+            --gold-primary: #D4AF37;
+            --gold-light: #FBF5E5;
+            --gold-dark: #997A15;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-glass: rgba(255, 255, 255, 0.05);
+            --border-gold: rgba(212, 175, 55, 0.2);
+            --surface-glass: rgba(15, 23, 42, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- TEXTURA PREMIUM Y LUCES --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .ambient-light {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .light-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%); }
+        .light-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(15, 23, 42, 1) 0%, transparent 70%); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            padding: 120px 0 0px; /* Reducido drásticamente para evitar espacio muerto arriba */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pre-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--gold-primary);
+            margin-bottom: 25px;
+            display: inline-block;
+            font-weight: 600;
+            border: 1px solid var(--border-gold);
+            padding: 8px 24px;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            background: linear-gradient(180deg, #FFFFFF 30%, #A1A1AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            max-width: 950px;
+        }
+
+        .hero h1 span.gold-highlight {
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* --- BOTONES PREMIUM --- */
+        .btn-luxury {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 45px;
+            background: linear-gradient(135deg, #E6C875 0%, #B88A22 100%);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        }
+
+        .btn-luxury::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.7s ease;
+        }
+
+        .btn-luxury:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-luxury:hover::after {
+            left: 150%;
+        }
+
+        .btn-outline {
+            padding: 12px 28px;
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        /* --- IMAGENES HERO MOCKUP --- */
+        .hero-mockup-img {
+            max-width: 540px;
+            width: 100%;
+            height: auto;
+            margin-top: -15px;      /* Atrae la silueta del libro hacia el botón eliminando espacio transparente superior */
+            margin-bottom: -150px;  /* Contrae fuertemente el espacio transparente inferior de la imagen original */
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.55));
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-mockup-img:hover {
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        /* --- ESTADOS / CARDS --- */
+        .section {
+            padding: 20px 0 40px; /* Mantener estrecha la unión superior */
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .grid-states {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            padding: 50px 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(15, 23, 42, 0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- SECCIÓN PRECIO --- */
+        .price-section {
+            position: relative;
+            padding: 60px 0 120px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .price-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 500px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .price-card {
+            background: rgba(10, 15, 30, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 32px;
+            padding: 80px 60px 70px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .strike-price {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            opacity: 0.6;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+
+        .actual-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            line-height: 1;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 30px;
+            text-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .actual-price span {
+            font-size: 3rem;
+            vertical-align: super;
+            font-weight: 600;
+            color: var(--gold-primary);
+        }
+
+        .price-copy {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 45px;
+            font-weight: 300;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 80px 0 40px;
+            text-align: center;
+            background: #02040A;
+        }
+
+        .footer-legal {
+            max-width: 800px;
+            margin: 30px auto 0;
+            font-size: 0.75rem;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero { padding: 110px 0 0px; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero-mockup-img { 
+                margin-top: -5px; 
+                margin-bottom: -70px; /* Reducción proporcional para pantallas móviles */
+                max-width: 320px; 
+            }
+            .section { padding: 20px 0 20px; }
+            .price-section { padding: 40px 0 80px; }
+            .price-card { padding: 50px 30px; }
+            .actual-price { font-size: 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capas base estéticas -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="https://pay.hotmart.com/Y105873762I" class="logo">
+                Guía comparativa <span>LLC</span>
+            </a>
+            <a href="https://pay.hotmart.com/Y105873762I" class="btn-outline">Inversión: $11</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero fade-up">
+            <div class="container">
+                <span class="pre-title">Guía Comparativa 2026</span>
+                <h1>¿En qué estado debes abrir tu <span class="gold-highlight">LLC en EE.UU.</span>?<br>Una decisión que define tus costos y privacidad.</h1>
+                <p>La arquitectura corporativa que utilizan los emprendedores de élite para elegir el estado perfecto de su LLC. Análisis técnico diseñado exclusivamente para no-residentes latinoamericanos.</p>
+                <a href="https://pay.hotmart.com/Y105873762I" class="btn-luxury">Acceder a la Estrategia</a>
+                
+                <!-- Contenedor de la imagen tridimensional que me pediste incorporar -->
+                <div>
+                    <img src="https://lh3.googleusercontent.com/d/1KDcJzAlhyUuk7BrzozROgoIhd_KM1-lM" alt="Guía Comparativa LLC Mockup Oficial" class="hero-mockup-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <h2>La jurisdicción lo cambia todo.</h2>
+                    <p>Una decisión técnica determina tu nivel de privacidad, tu carga impositiva anual y tu capacidad para operar en la banca internacional de primer nivel.</p>
+                </div>
+                
+                <div class="grid-states">
+                    <div class="card">
+                        <span class="card-tag">El Escudo Digital</span>
+                        <h3>Wyoming</h3>
+                        <p>El estándar de oro para negocios remotos. Cero impuestos estatales, mantenimiento residual ($60) and protección de identidad total.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-tag">El Estándar VC</span>
+                        <h3>Delaware</h3>
+                        <p>El hub corporativo por excelencia. Obligatorio si proyectas levantar capital, pero exige un premium en mantenimiento anual ($300+).</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-tag">El Nexo Físico</span>
+                        <h3>Florida</h3>
+                        <p>El puente logístico hacia LATAM. La estructura ideal para e-commerce físico, Amazon FBA y operaciones con base en Miami.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-tag">El Mínimo Viable</span>
+                        <h3>New Mexico</h3>
+                        <p>Cero costos de reporte anual. Diseñado exclusivamente para fases iniciales donde la optimización de caja es la única prioridad.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-tag">El Nexo Legal</span>
+                        <h3>Agente Registrado</h3>
+                        <p>No necesitas ser residente. La ley solo exige designar a un representante local en el estado elegido para recibir notificaciones oficiales y mantener tu LLC en regla.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-tag">Operativa Global</span>
+                        <h3>Banca Remota</h3>
+                        <p>Elegir jurisdicciones de alto estándar (Wyoming o Delaware) facilita la apertura de cuentas corporativas 100% online en EE.UU. y el acceso a pasarelas como Stripe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="precio" class="price-section fade-up">
+            <div class="price-glow"></div>
+            <div class="container">
+                <div class="price-card">
+                    <span class="pre-title" style="margin-bottom: 20px; border:none; background:none;">Inversión en Seguridad Legal</span>
+                    <div class="strike-price">$31 USD</div>
+                    <div class="actual-price"><span>$</span>11</div>
+                    <p class="price-copy">Elegir el estado equivocado es el error silencioso que más dinero cuesta al emprender en EE.UU. No regales cientos de dólares cada año en renovaciones sorpresa o impuestos estatales por falta de claridad.</p>
+                    
+                    <a id="descargar-manual" href="https://pay.hotmart.com/Y105873762I" class="btn-luxury" style="width: 100%;">Descargar Manual Oficial</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <a href="https://pay.hotmart.com/Y105873762I" class="logo" style="justify-content: center; margin-bottom: 15px; text-decoration: none;">
+                Guía comparativa <span>LLC</span>
+            </a>
+            <p style="color: var(--text-main); font-size: 0.9rem; letter-spacing: 1px;">Consultoría legal corporativa</p>
+            
+            <div class="footer-legal">
+                <strong>AVISO LEGAL:</strong> La información contenida en este manual y sitio web es de carácter educativo e informativo. No establece una relación abogado-cliente ni constituye asesoramiento legal, impositivo o contable personalizado. Las leyes estatales y federales están sujetas a cambios. NGG Abogados recomienda encarecidamente consultar con un CPA o profesional legal sobre su situación específica y nexo económico antes de proceder con la formación de cualquier entidad en los Estados Unidos.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach((elem) => {
+                observer.observe(elem);
+            });
+
+            // Efecto blur en navbar al hacer scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(3, 7, 18, 0.85)';
+                    navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                } else {
+                    navbar.style.background = 'rgba(3, 7, 18, 0.7)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
