@@ -4,6 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Comparativa LLC 2026</title>
+
+    <!-- ============================================================
+         META PIXEL — ⚠️ REEMPLAZÁ TU_PIXEL_ID (aparece 2 veces)
+         por el ID numérico de tu Pixel (Events Manager).
+         La landing dispara PageView + ViewContent.
+         InitiateCheckout y Purchase los dispara Hotmart:
+         activá la integración en Hotmart → Herramientas →
+         Pixel de seguimiento, con el MISMO Pixel ID.
+         ============================================================ -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'TU_PIXEL_ID');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_name: 'Guia Comparativa LLC 2026',
+        content_category: 'ebook_legal',
+        value: 11.00,
+        currency: 'USD'
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- ============================ FIN META PIXEL ============================ -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -105,7 +137,7 @@
         /* --- HERO --- */
         .hero {
             position: relative;
-            padding: 120px 0 0px; /* Reducido drásticamente para evitar espacio muerto arriba */
+            padding: 120px 0 0px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -215,8 +247,8 @@
             max-width: 540px;
             width: 100%;
             height: auto;
-            margin-top: -15px;      /* Atrae la silueta del libro hacia el botón eliminando espacio transparente superior */
-            margin-bottom: -150px;  /* Contrae fuertemente el espacio transparente inferior de la imagen original */
+            margin-top: -15px;
+            margin-bottom: -150px;
             position: relative;
             z-index: 2;
             filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.55));
@@ -229,7 +261,7 @@
 
         /* --- ESTADOS / CARDS --- */
         .section {
-            padding: 20px 0 40px; /* Mantener estrecha la unión superior */
+            padding: 20px 0 40px;
             position: relative;
             z-index: 5;
         }
@@ -313,6 +345,106 @@
             line-height: 1.7;
         }
 
+        /* --- SECCIÓN QUÉ INCLUYE --- */
+        .includes-card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            padding: 60px 50px;
+            max-width: 700px;
+            margin: 0 auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .includes-list {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0 25px;
+        }
+
+        .includes-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-glass);
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 300;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .includes-list li:last-child { border-bottom: none; }
+
+        .includes-list .check {
+            color: var(--gold-primary);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .includes-list li strong {
+            font-weight: 600;
+        }
+
+        .delivery-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- SECCIÓN AUTOR --- */
+        .author-section {
+            padding: 60px 0;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: var(--surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .author-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-gold);
+            flex-shrink: 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .author-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            margin-bottom: 6px;
+        }
+
+        .author-title {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .author-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
         /* --- SECCIÓN PRECIO --- */
         .price-section {
             position: relative;
@@ -362,7 +494,7 @@
             margin-bottom: 30px;
             text-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
-        
+
         .actual-price span {
             font-size: 3rem;
             vertical-align: super;
@@ -377,6 +509,15 @@
             margin-bottom: 45px;
             font-weight: 300;
         }
+
+        .guarantee-note {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .guarantee-note strong { color: var(--gold-light); font-weight: 600; }
 
         /* --- FOOTER --- */
         footer {
@@ -398,15 +539,22 @@
         @media (max-width: 768px) {
             .hero { padding: 110px 0 0px; }
             .hero h1 { font-size: 2.3rem; }
-            .hero-mockup-img { 
-                margin-top: -5px; 
-                margin-bottom: -70px; /* Reducción proporcional para pantallas móviles */
-                max-width: 320px; 
+            .hero-mockup-img {
+                margin-top: -5px;
+                margin-bottom: -70px;
+                max-width: 320px;
             }
             .section { padding: 20px 0 20px; }
             .price-section { padding: 40px 0 80px; }
             .price-card { padding: 50px 30px; }
             .actual-price { font-size: 5rem; }
+            .includes-card { padding: 40px 25px; }
+            .author-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 25px;
+                gap: 25px;
+            }
         }
     </style>
 </head>
@@ -433,8 +581,10 @@
                 <h1>¿En qué estado debes abrir tu <span class="gold-highlight">LLC en EE.UU.</span>?<br>Una decisión que define tus costos y privacidad.</h1>
                 <p>La arquitectura corporativa que utilizan los emprendedores de élite para elegir el estado perfecto de su LLC. Análisis técnico diseñado exclusivamente para no-residentes latinoamericanos.</p>
                 <a href="https://pay.hotmart.com/Y105873762I" class="btn-luxury">Acceder a la Estrategia</a>
-                
-                <!-- Contenedor de la imagen tridimensional que me pediste incorporar -->
+
+                <!-- 💡 RECOMENDACIÓN: subí esta imagen al repo (ej. img/mockup.png)
+                     y cambiá el src a la ruta local. Los links de Google Drive
+                     se rompen seguido y cargan lento en móvil. -->
                 <div>
                     <img src="https://lh3.googleusercontent.com/d/1KDcJzAlhyUuk7BrzozROgoIhd_KM1-lM" alt="Guía Comparativa LLC Mockup Oficial" class="hero-mockup-img">
                 </div>
@@ -447,12 +597,12 @@
                     <h2>La jurisdicción lo cambia todo.</h2>
                     <p>Una decisión técnica determina tu nivel de privacidad, tu carga impositiva anual y tu capacidad para operar en la banca internacional de primer nivel.</p>
                 </div>
-                
+
                 <div class="grid-states">
                     <div class="card">
                         <span class="card-tag">El Escudo Digital</span>
                         <h3>Wyoming</h3>
-                        <p>El estándar de oro para negocios remotos. Cero impuestos estatales, mantenimiento residual ($60) and protección de identidad total.</p>
+                        <p>El estándar de oro para negocios remotos. Cero impuestos estatales, mantenimiento residual ($60) y protección de identidad total.</p>
                     </div>
                     <div class="card">
                         <span class="card-tag">El Estándar VC</span>
@@ -483,6 +633,42 @@
             </div>
         </section>
 
+        <!-- ============ NUEVA SECCIÓN: QUÉ INCLUYE (espeja la promesa del anuncio) ============ -->
+        <section class="section fade-up">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 50px;">
+                    <h2>Qué vas a encontrar adentro</h2>
+                    <p>Por cada estado —Wyoming, Delaware, Florida y New Mexico— un análisis directo, sin relleno:</p>
+                </div>
+                <div class="includes-card">
+                    <ul class="includes-list">
+                        <li><span class="check">✓</span><span><strong>Costos reales, año por año:</strong> formación, agente registrado, reportes anuales e impuestos estatales de cada jurisdicción.</span></li>
+                        <li><span class="check">✓</span><span><strong>Ventajas y desventajas</strong> de cada estado según tu tipo de negocio y tu situación como no-residente.</span></li>
+                        <li><span class="check">✓</span><span><strong>Perfiles recomendados:</strong> qué estado conviene si vendés servicios digitales, e-commerce, Amazon FBA o proyectás levantar capital.</span></li>
+                        <li><span class="check">✓</span><span><strong>Errores frecuentes de no-residentes</strong> que generan gastos sorpresa en renovaciones e impuestos, y cómo evitarlos.</span></li>
+                    </ul>
+                    <p class="delivery-note">📄 PDF descargable · Acceso inmediato · Edición 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NUEVA SECCIÓN: AUTORIDAD ============
+             ⚠️ EDITÁ: subí tu foto al repo (ej. img/nicolas.jpg) y
+             ajustá el texto de credenciales a tu matrícula/experiencia real. -->
+        <section class="author-section fade-up">
+            <div class="container">
+                <div class="author-card">
+                    <img src="img/nicolas.jpg" alt="Nicolás Gabriel González, abogado" class="author-photo">
+                    <div class="author-info">
+                        <span class="author-title">Quién escribió esta guía</span>
+                        <h3>Nicolás Gabriel González</h3>
+                        <span class="author-title" style="margin-bottom: 12px;">Abogado · NGG Abogados</span>
+                        <p>Soy abogado dedicado al derecho empresarial y patrimonial: ayudo a emprendedores e inversores a estructurar sus negocios y proteger lo que construyen. Escribí esta guía porque la mayoría de la información sobre LLCs que circula en español está hecha por vendedores de servicios, no por abogados: mi objetivo es que elijas tu estado entendiendo las consecuencias legales e impositivas reales de esa decisión.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="precio" class="price-section fade-up">
             <div class="price-glow"></div>
             <div class="container">
@@ -491,8 +677,10 @@
                     <div class="strike-price">$31 USD</div>
                     <div class="actual-price"><span>$</span>11</div>
                     <p class="price-copy">Elegir el estado equivocado es el error silencioso que más dinero cuesta al emprender en EE.UU. No regales cientos de dólares cada año en renovaciones sorpresa o impuestos estatales por falta de claridad.</p>
-                    
+
                     <a id="descargar-manual" href="https://pay.hotmart.com/Y105873762I" class="btn-luxury" style="width: 100%;">Descargar Manual Oficial</a>
+
+                    <p class="guarantee-note"><strong>Garantía de 7 días.</strong> Si la guía no te aporta claridad, Hotmart te devuelve el 100% de tu dinero. Compra procesada de forma segura, con tarjetas y medios de pago locales de tu país.</p>
                 </div>
             </div>
         </section>
@@ -504,7 +692,7 @@
                 Guía comparativa <span>LLC</span>
             </a>
             <p style="color: var(--text-main); font-size: 0.9rem; letter-spacing: 1px;">Consultoría legal corporativa</p>
-            
+
             <div class="footer-legal">
                 <strong>AVISO LEGAL:</strong> La información contenida en este manual y sitio web es de carácter educativo e informativo. No establece una relación abogado-cliente ni constituye asesoramiento legal, impositivo o contable personalizado. Las leyes estatales y federales están sujetas a cambios. NGG Abogados recomienda encarecidamente consultar con un CPA o profesional legal sobre su situación específica y nexo económico antes de proceder con la formación de cualquier entidad en los Estados Unidos.
             </div>
